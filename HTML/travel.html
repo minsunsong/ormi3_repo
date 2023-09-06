@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 반려견과 함께하는 여행</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <style>
+        *{
+            font-family: 'Gamja Flower', cursive;
+        }
+    </style>
+  </head>
+  <body>
+    <!-- header -->
+    <header class="header-02">
+        <h1>반려견과 떠나는 여행 일정 세우기</h1>
+    </header>
+
+    <main>
+        <form method="GET">
+            <div>
+                <label for="travelInput">여행지를 입력해주세요!</label>
+                <input id="travelInput" type="text" name="travel" placeholder="ex)가평">
+            </div>
+
+            <label for="daysInput">여행 기간을 입력해주세요!</label>
+            <input id="daysInput" type="text" name="days" placeholder="ex)2박3일">
+
+            <button><a href="index.html">이전으로</a></button>
+            <button><a href="travel2.html">다음으로</a></button>
+        </form>
+    </main>
+
+    <script>
+        document.getElementById('travelInput').addEventListener('input', function() {
+            localStorage.setItem('travelInput', this.value);
+        });
+        document.getElementById('daysInput').addEventListener('input', function() {
+            localStorage.setItem('daysInput', this.value);
+        });
+    </script>
+  </body>
+</html>

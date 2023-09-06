@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>저장된 정보 확인</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/result.css">
+</head>
+<body>
+    <header class="index-header">
+        <div>
+            <h1>반려견과 떠나는 나들이</h1>
+        </div>
+        <div class="chat-wrapper">
+            <img src="../IMG/chat.png" alt="채팅">
+            <a href="./chatbot.html">챗봇 바로가기</a>
+        </div>
+    </header>
+
+    <!-- <h1>내용을 확인해 주세요</h1> -->
+    <div id="displayContents"></div>
+        <button><a href="outing.html">이전으로</a></button>
+
+    <script>
+        // 로컬 스토리지에서 저장된 데이터 가져오기
+        const storedLocation = localStorage.getItem('locationInput');
+        const storedTheme = localStorage.getItem('facility');
+        const storedInfo = localStorage.getItem('additionalInfo');
+
+        //가져온 값을 조합하여 결과 문자열 생성
+        const resultString = `선택한 '${storedLocation}'에서 '${storedInfo}'을 반영한 유명한 '${storedTheme}' TOP3를 추천 드립니다.`;
+
+        //결과 문자열을 화면에 출력
+        const displayContentsRes = document.getElementById('displayContents');
+        displayContentsRes.textContent = resultString;
+
+        
+        const url = 'https://estsoft-openai-api.jejucodingcamp.workers.dev/';
+
+        
+        const data = [
+        {   "role":"user",
+            "content":"강릉에서 애견동반 펜션/호텔 TOP3를 추천해줘"
+        },{ 
+            "role": "system",  "content": "선택하신 강릉 지역의 애견동반 펜션/호텔 테마 추천장소는 경포코지펜션, 파인힐애견펜션, 세인트존스 입니다. "
+        },{
+            "role":"user","content":"강남에서 애견식당/카페 TOP3를 추천해줘"
+        },{ 
+            "role": "system",  "content": "선택하신 강남 지역의 애견식당/카페 테마 추천장소는 청담 퍼피라운지, 놀로스퀘어, 펫타리움 입니다. "
+        },{
+            "role":"user","content":"강남에서 애견 동반이 가능한 카페 TOP3를 추천해줘"
+        },{ "role": "system",  "content": "선택하신 강남지역의 애견 동반이 가능한 카페 추천장소는 달마시안, 카페무니 압구정본점, 마일스톤 커피 입니다. "
+        }, {
+            "role":"user","content":"서울에서 애견동반 쇼핑몰 TOP3를 추천해줘"
+        },{ 
+            "role": "system",  "content": "선택하신 서울 지역의 애견동반 쇼핑몰 테마 추천장소는 롯데월드몰, IFC몰, 스타필드 코엑스몰 입니다. "
+        }, {
+            "role":"user","content":"분당에서 애견 동반이 가능한 식당 TOP3를 추천해줘"
+        },{ 
+            "role": "system",  "content": "선택하신 판교 지역의 애견 동반이 가능한 식당 테마 추천장소는 더 테라스 LA, 라스토리아1001, 칠리로29 입니다. "
+        }, {
+            "role":"user","content":"판교에서 애견 동반이 가능한 카페 TOP3를 추천해줘"
+        },{ 
+            "role": "system",  "content": "선택하신 판교 지역의 애견 동반이 가능한 카페 테마 추천장소는 마이페이보릿네이버, 그린그라스, 카페랄로 입니다. "
+        },{
+            "role":"user","content":"가평에서 애견 글램핑/캠핑장 TOP3를 추천해줘"
+        },{ 
+            "role": "system",  "content": "선택하신 가평 지역의 애견 글램핑/캠핑장 테마 추천장소는 가평 아이섬 애견동반 풀 글램핑, 가평 또바기 애견 동반 스파 글램핑 카라반 펜션, 오하브글램핑펜션 입니다. "
+        }]
+
+        //API에 요청
+        data.push({"role": "user", "content": `'${storedLocation}'에서 '${storedInfo}'을 반영한 유명한 '${storedTheme}' TOP3를 추천 해줘, 답변은 "선택하신 {}지역의 {}테마 추천장소는 {}입니다" 형식으로 해줘`})
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+        })
+        .then(res => res.json())
+        .then(res => {
+            console.log(res)
+            document.querySelector("#displayContents").innerText = res.choices[0].message.content;
+        })        
+    </script>
+</body>
+</html>
+

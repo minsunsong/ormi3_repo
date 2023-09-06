@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <!-- <link rel="stylesheet" href="./css/common.css"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <style>
+        *{
+            font-family: 'Gamja Flower', cursive;
+        }
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: white;
+        }
+        .index-header {
+            background-color: lightpink;
+            color:white;
+            padding: 5px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 5px;
+            border-radius: 5px;
+        }
+        .index-header a {
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .index-header img {
+            width: 30px; /*아이콘 크기*/
+            height: 30px;
+        }
+        .index-header h1 {
+            font-size: 24px;
+        }
+        a[href="./chatbot.html"] {
+            font-size: 18px; /* 원하는 크기로 설정 */
+        }
+        .chat-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .chat-wrapper img {
+            width: 20px;
+            height: 20px;
+        }
+        .main {
+            padding: 20px;
+        }
+        .index-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 20px;
+            text-align: center;
+        }
+        .index-content a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            margin-top: 20px; /*이미지와 텍스트 사이의 간격*/
+        }
+        .index-content-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            border: 1px solid lightpink;
+            border-radius: 5px;
+            padding: 20px;
+          
+        }
+        .index-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            color: #333;
+            text-align: center;
+            padding: 10px 0;
+        }
+        
+    </style>
+  </head>
+  <body>
+    <!-- header -->
+    <header class="index-header">
+        <h1>
+            <a href="#">
+                <img src="../IMG/puppy.png" alt="아이콘">
+                반려견과 떠나용
+            </a>
+        </h1>
+        <div class="chat-wrapper">
+            <img src="../IMG/chat.png" alt="채팅">
+            <a href="./chatbot.html">챗봇 바로가기</a>
+        </div>
+    </header>
+    <!-- header -->
+
+    <main>
+        <div class="index-content-container">
+            <div class="index-content">
+                <img src="../IMG/dog1.jpg" width="400" height="300" alt="뛰어노는 강아지">
+                <a href="./outing.html">반려견 나들이 추천</a>
+            </div>
+                
+            <div class="index-content">
+                <img src="../IMG/dog2.jpg" width="400" height="300" alt="2마리 강아지">
+                <a href="./travel.html">반려견 여행 일정 세우기</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="index-footer">
+        Copyright 2023. All rights reserved.
+    </footer>
+    
+
+  </body>
+</html>

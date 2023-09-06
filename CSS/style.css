@@ -1,0 +1,102 @@
+/* style.css */
+
+/* 전체 페이지 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f6acac;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.header-01,
+.header-02 {
+    /* background-color: #007bff; */
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+/* 헤더 제목 스타일 */
+h1 {
+    margin: 0;
+}
+/* 메인 컨테이너 스타일 */
+main {
+    max-width: 700px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1;
+    border-radius: 5px;
+}
+/* 이미지 스타일 */
+img {
+    /* max-width: 100%; */
+    height: auto;
+    /* display: block; */
+    margin: 0 auto;
+    /* margin-right: 1px; */
+}
+/* 폼 스타일 */
+form {
+    text-align: left;
+    margin-top: 20px;
+    
+}
+/* 레이블 스타일 */
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+    
+}
+/* 입력 필드 스타일 */
+input[type="text"],
+input[type="radio"],
+input[type="submit"],
+textarea {
+    width: 96%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* 라디오 버튼 레이블과 라디오 버튼 간의 간격 조정 */
+input[type="radio"] + label {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+}
+button {
+    background-color:lightpink;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 20px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: lightsalmon;
+  }
+
+
+/* 입력 완료 버튼 스타일 */
+#submitBtn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#submitBtn:hover {
+    background-color:lightsalmon;
+}

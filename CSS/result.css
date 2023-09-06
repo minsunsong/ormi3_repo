@@ -1,0 +1,101 @@
+*{
+    font-family: 'Gamja Flower', cursive;
+}
+body { 
+    background-color: lightpink;
+    margin: 0;
+    padding: 10px 0;
+    text-align: center;
+}
+.header {
+    background-color: lightpink;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+.header a {
+    text-decoration: none;
+    color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+button {
+    background-color: #fff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+    text-decoration: none;
+    margin-top: 30px;
+}
+
+button a {
+    text-decoration: none;
+    color:lightpink;
+    border: none;
+    border-radius: 5px;
+}
+
+/* button + br {
+    margin-top: 10px;
+} */
+
+#displayContents {
+    margin: 0 auto; /* 중앙 정렬을 위해 margin을 auto로 설정 */
+    max-width: 60%;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.index-header {
+    background-color: lightpink;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    border-radius: 5px;
+    /* gap: 50px; */
+}
+
+.index-header a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 18px;
+}
+.index-header img {
+    width: 30px; /*아이콘 크기*/
+    height: 30px;
+}
+.index-header h1 {
+    font-size: 24px;
+    margin: 20px 20px;
+    /* padding: 10; */
+}
+a[href="./chatbot.html"] {
+    font-size: 18px; /* 원하는 크기로 설정 */
+}
+.chat-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.chat-wrapper img {
+    width: 20px;
+    height: 20px;
+}

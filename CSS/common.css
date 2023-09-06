@@ -1,0 +1,13 @@
+.index-header {
+    height: 80px;
+    padding: 0 20px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.index-header div {
+    display: flex;
+    gap: 40px;
+}

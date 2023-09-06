@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>저장된 정보 확인</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/result.css">
+  </head>
+
+  <body>
+    <!-- header -->
+    <header class="index-header">
+        <div>
+            <h1>반려견과 여행 일정 세우기</h1>
+        </div>
+        <div class="chat-wrapper">
+            <img src="../IMG/chat.png" alt="채팅">
+            <a href="./chatbot.html">챗봇 바로가기</a>
+        </div>
+    </header>
+    <!-- header -->
+
+    <div id="lookContents"></div>
+    <button><a href="travel.html">이전으로</a></button>
+
+    <script>
+        const storedTravel = localStorage.getItem('travelInput');
+        const storedDays = localStorage.getItem('daysInput');
+
+        const resultString = `선택한 '${storedTravel}'에서 애견과 함께하는 '${storedDays}'의 일정을 세워드리겠습니다.`;
+
+        const lookContentsRes = document.getElementById('lookContents');
+        lookContentsRes.textContent = resultString;
+
+        const url = 'https://estsoft-openai-api.jejucodingcamp.workers.dev/';
+
+        const data = [
+        {   "role":"user","content":"선택한 가평에서 2박 3일의 일정을 세워드리겠습니다."
+        },{ 
+            "role": "system",  "content": "선택하신 가평 지역에서 2박 3일 일정으로. "
+        }]
+
+        data.push({"role":"user", "content": `'${storedTravel}'에서 '${storedDays}'의 일정을 추천 해줘, 답변은 "선택하신 {}지역의 애견과 함께하는 {}의 일정은 {}입니다"형식으로 해줘`})
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+        })
+        .then(res => res.json())
+        .then(res => {
+            console.log(res)
+            document.querySelector("#lookContents").innerText = res.choices[0].message.content;
+        })
+
+    </script>
+  </body>
+</html>

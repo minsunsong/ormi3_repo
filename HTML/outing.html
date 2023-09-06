@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 반려견과 떠나는 나들이</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <style>
+        *{
+            font-family: 'Gamja Flower', cursive;
+        }
+        .header-01 {
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 10vh;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+    </style>
+  </head>
+  <body>
+    <!-- header -->
+    <header class="header-01">
+        <div class="header-content">
+        <img src="../IMG/img.jpg" width="40" height="40" alt="강아지발바닥">
+        <h1>나의 반려견과 떠나는 나들이 장소 추천</h1>
+    </div>
+    </header>
+
+    <!-- main -->
+    <main>
+        <form method="GET">
+            <div>
+                <label for="locationInput">1. 나들이 떠날 도시를 구체적으로 입력해주세요!</label>
+                <input id="locationInput" type="text" name="location" placeholder="ex)강남구">
+            </div>
+
+            <label>2. 이용하고 싶은 시설을 선택해주세요! (실내 나들이 / 야외 나들이)</label>
+            
+            <div>
+                <fieldset>
+                    <legend> 실내 나들이 : </legend>
+                    <input type="radio" id="cafeWithDog" name="facility" value="애견동반카페">
+                    <label for="cafeWithDog">애견 동반이 가능한 카페</label>
+                    <input type="radio" id="restaurantWithDog" name="facility" value="애견동반식당">
+                    <label for="restaurantWithDog">애견 동반이 가능한 식당</label>
+                    <input type="radio" id="dogCafe" name="facility" value="애견카페 및 애견식당">
+                    <label for="dogCafe">애견 카페 및 애견 식당</label>
+                </fieldset>
+            </div>
+
+            <div>
+                <fieldset>
+                    <legend>야외 나들이 : </legend>
+                    <input type="radio" id="hotel" name="facility" value="펜션/호텔">
+                    <label for="hotel">펜션/호텔</label>
+                    <input type="radio" id="campingSite" name="facility" value="글램핑/캠핑장">
+                    <label for="campingSite">글램핑/캠핑장</label>
+                    <input type="radio" id="park" name="facility" value="공원(운동장)">
+                    <label for="park">공원(운동장)</label>
+                    <input type="radio" id="shoppingMall" name="facility" value="쇼핑몰">
+                    <label for="shoppingMall">쇼핑몰</label>
+                </fieldset>
+            </div>
+
+            <label for="additionalInfo">3. 추가로 반영되었으면 하는 내용이 있다면 입력해주세요!</label><br>
+            <input id="additionalInfo" type="text" name="Info" placeholder="ex)주차 가능한 장소">
+
+            <button><a href="index.html">이전으로</a></button>
+            <button><a href="outing2.html">다음으로</a></button>
+        </form>
+    </main>
+    
+    <script>
+        document.getElementById('locationInput').addEventListener('input', function() {
+            localStorage.setItem('locationInput', this.value);
+        });
+        document.getElementById('cafeWithDog').addEventListener('click', function() {
+            localStorage.setItem('facility', '애견동반카페');
+        });
+        document.getElementById('restaurantWithDog').addEventListener('click', function() {
+            localStorage.setItem('facility', '애견동반식당');
+        });
+        document.getElementById('dogCafe').addEventListener('click', function() {
+            localStorage.setItem('facility', '애견카페 및 애견식당');
+        });
+        /////////////////////////////
+        document.getElementById('hotel').addEventListener('click', function() {
+            localStorage.setItem('facility', '펜션/호텔');
+        });
+        document.getElementById('campingSite').addEventListener('click', function() {
+            localStorage.setItem('facility', '글램핑/캠핑장');
+        });
+        document.getElementById('park').addEventListener('click', function() {
+            localStorage.setItem('facility', '공원(운동장)');
+        });
+        document.getElementById('shoppingMall').addEventListener('click', function() {
+            localStorage.setItem('facility', '쇼핑몰');
+        });
+        document.getElementById('additionalInfo').addEventListener('input', function() {
+            localStorage.setItem('additionalInfo', this.value);
+        });
+    </script>
+  </body>
+</html>

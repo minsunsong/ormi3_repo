@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>챗봇 서비스</title>
+    <link rel="stylesheet" href="../CSS/chat.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <style>
+        *{
+            font-family: 'Gamja Flower', cursive;
+        }
+    </style>
+   
+  </head>
+
+  
+  <body>
+    <!-- header -->
+    <header class="index-header">
+        <div>
+        <button class="home-button"><a href="./index.html">첫 화면으로</a></button>
+        </div>
+    </header>
+    <!-- header -->
+
+    <div class="container">
+        <form>
+            <label for="questions"></label>
+            <input id="questions" type="text" placeholder="ex)대형견 기준을 알려줘.">
+            <button class="chat-button" type="submit">챗봇 서비스 입력 버튼</button>
+        </form>
+        <div class="answer"></div>
+    </div>
+    
+    <script>
+        const $input = document.querySelector('input')
+        const $button = document.querySelector('.chat-button')
+        const $answer = document.querySelector('.answer')
+
+    const data = []
+    data.push({
+        "role": "system",
+        "content": "assistant는 애견 관련 질문을 답해주는 챗봇입니다."
+    })
+
+    const url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`
+    
+    $button.addEventListener('click', e => { //chat-button을 클릭했을 때 이벤트 감지
+        e.preventDefault()
+        const contents = $input.value
+        data.push({
+            "role": "user",
+            "content": contents
+        })
+        $input.value = ''
+
+        chatGPTAPI()
+    })
+
+    function chatGPTAPI() {
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+            redirect: 'follow'
+        })
+        .then(res => res.json())
+        .then(res => {
+            console.log(res)
+            // 답변 온 것을 assistant로 저장
+            $answer.innerHTML = `<p>${res.choices[0].message.content}</p>`
+        })
+        .catch(error => {
+            console.error('API 요청 중 오류 발생:', error);
+        });
+    }
+</script>
+<!-- <script src="answer.js"></script> -->
+
+  </body>
+</html>
